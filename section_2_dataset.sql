@@ -15,13 +15,15 @@ cn20 AS (
 
 main AS (
     SELECT
-        indiv20.tran_id,
-        indiv20.name,
+        indiv20.tran_id
+        indiv20.transaction_dt as transaction_date,
+        indiv20.name as donor_name,
         indiv20.donor_state,
+        indiv20.transaction_amt as donation_amount,
         cn20.cand_pty_affiliation,
-        cn20.cand_name,
+        cn20.cand_name as candidate_name, 
         cn20.cand_office_st AS cand_office_state,
-        cn20.cand_office
+        cn20.cand_office AS candidate_office
     FROM indiv20
     LEFT JOIN cn20
         ON indiv20.cmte_id = cn20.cand_pcc
